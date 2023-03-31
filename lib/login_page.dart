@@ -69,14 +69,12 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.person),
                   ),
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please enter your name";
-                    }
                     bool emailValid = RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(value);
-                    if (!emailValid) {
-                      return "Enter valid name";
+                        .hasMatch(value!);
+
+                    if (value.isEmpty) {
+                      return "Please enter your name";
                     }
                   },
                 ),
@@ -102,8 +100,15 @@ class _LoginPageState extends State<LoginPage> {
                           passToggle ? Icons.visibility : Icons.visibility_off),
                     ),
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter your password";
+                    } else if (passController.text.length < 6) {
+                      return "Please must be atleast 6 characters";
+                    }
+                  },
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: 40),
                 InkWell(
                   onTap: () {
                     if (_formfield.currentState!.validate()) {
