@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_pam/login_page.dart';
 
 class GettingStart extends StatelessWidget {
   const GettingStart({super.key});
@@ -37,7 +38,7 @@ class GettingStart extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 100,
+            height: 110,
           ),
           Image(
             image: AssetImage("images/pokeball2.png"),
