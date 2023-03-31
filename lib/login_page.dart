@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formfield = GlobalKey<_LoginPageState>();
+  final _formfield = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passController = TextEditingController();
   bool passToggle = true;
@@ -93,7 +93,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 60),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    if (_formfield.currentState!.validate()) {
+                      print("Success");
+                      emailController.clear();
+                      passController.clear();
+                    }
+                  },
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
