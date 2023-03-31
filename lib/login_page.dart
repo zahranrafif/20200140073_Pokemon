@@ -66,14 +66,26 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: "Name",
                     hintText: "Enter your name",
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: Icon(Icons.person),
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter your name";
+                    }
+                    bool emailValid = RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(value);
+                    if (!emailValid) {
+                      return "Enter valid name";
+                    }
+                  },
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
+                  obscureText: passToggle,
                   controller: passController,
                   decoration: InputDecoration(
                     labelText: "Password",
