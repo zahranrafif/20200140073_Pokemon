@@ -136,6 +136,33 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32.0),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        toast(context, "Thanks for joining our family");
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Dashboard(
+                                  _usernameController.text,
+                                  _emailController.text,
+                                  _passwordController.text),
+                            ));
+                      }
+                    },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text('Register Now'.toUpperCase(),
+                          textAlign: TextAlign.center),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
