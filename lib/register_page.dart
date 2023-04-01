@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pokedex_pam/dashboard.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -25,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
           child: Form(
@@ -71,6 +72,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
                   child: TextFormField(
@@ -90,6 +94,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
@@ -112,6 +119,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       return null;
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
@@ -144,25 +154,27 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        toast(context, "Thanks for joining our family");
-
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Dashboard(
-                                  _usernameController.text,
-                                  _emailController.text,
-                                  _passwordController.text),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Dashboard(User(
+                                _usernameController.text,
+                                _emailController.text,
+                                _passwordController.text)),
+                          ),
+                        );
                       }
                     },
                     child: SizedBox(
                       width: double.infinity,
-                      child: Text('Register Now'.toUpperCase(),
-                          textAlign: TextAlign.center),
+                      height: 40,
+                      child: ElevatedButton(
+                        child: Text("Register"),
+                        onPressed: () {},
+                      ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
