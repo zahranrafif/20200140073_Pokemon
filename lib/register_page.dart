@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pokedex_pam/dashboard.dart';
+import 'package:pokedex_pam/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -14,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool passToggle = true;
 
   @override
   void dispose() {
@@ -28,12 +30,28 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Container(
+                  height: 110,
+                  padding: EdgeInsets.all(0),
+                  child: Row(children: [
+                    FloatingActionButton(
+                      child: Icon(Icons.arrow_back),
+                      backgroundColor: Colors.amber,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                      },
+                    )
+                  ]),
+                ),
                 CircleAvatar(
                   backgroundImage: AssetImage("images/pikacu.jpg"),
                   radius: 60,
@@ -59,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(
                       labelText: "Name",
                       prefixIcon: Icon(Icons.person),
-                      border: OutlineInputBorder(),
+                      border: UnderlineInputBorder(),
                       hintText: "Enter your name",
                     ),
                     validator: (value) {
@@ -72,9 +90,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
                   child: TextFormField(
@@ -82,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: const InputDecoration(
                       labelText: "Email",
                       prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(),
+                      border: UnderlineInputBorder(),
                       hintText: "Enter your email",
                     ),
                     validator: (value) {
@@ -95,20 +110,26 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
                   child: TextFormField(
                     controller: _passwordController,
-                    obscureText: true,
-                    obscuringCharacter: "*",
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
-                      border: OutlineInputBorder(),
+                    obscureText: passToggle,
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(),
                       labelText: "Password",
                       hintText: "Enter your password",
+                      prefixIcon: Icon(Icons.lock),
+                      suffix: InkWell(
+                        onTap: () {
+                          setState(() {
+                            passToggle = !passToggle;
+                          });
+                        },
+                        child: Icon(passToggle
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -120,19 +141,25 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 4),
                   child: TextFormField(
-                    obscureText: true,
-                    obscuringCharacter: "*",
-                    decoration: const InputDecoration(
+                    obscureText: passToggle,
+                    decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
-                      border: OutlineInputBorder(),
+                      border: UnderlineInputBorder(),
                       labelText: "Re-Password",
                       hintText: "Re-Enter your password",
+                      suffix: InkWell(
+                        onTap: () {
+                          setState(() {
+                            passToggle = !passToggle;
+                          });
+                        },
+                        child: Icon(passToggle
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                      ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -150,6 +177,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(vertical: 32.0),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.amber,
                       padding: const EdgeInsets.symmetric(vertical: 10),
                     ),
                     onPressed: () {
@@ -165,13 +193,21 @@ class _RegisterPageState extends State<RegisterPage> {
                         );
                       }
                     },
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 40,
-                      child: ElevatedButton(
-                        child: Text("Register"),
-                        onPressed: () {},
+                    child: Container(
+                      height: 35,
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(50),
                       ),
+                      child: Center(
+                          child: Text(
+                        "Register",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
                     ),
                   ),
                 ),
