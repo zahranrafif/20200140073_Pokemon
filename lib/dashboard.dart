@@ -41,18 +41,13 @@ class _DashboardState extends State<Dashboard> {
         leading: IconButton(
           padding: EdgeInsets.only(left: 20),
           onPressed: () {},
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey.shade600),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              iconSize: 30,
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-                color: Colors.grey.shade400,
-              ),
+            child: Image.asset(
+              "images/ash.jpg",
             ),
           ),
         ],
@@ -69,7 +64,7 @@ class _DashboardState extends State<Dashboard> {
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                   borderSide: BorderSide.none),
-              hintText: "Search e.g Pokemon",
+              hintText: "Search Pokemon",
               hintStyle: TextStyle(fontSize: 14),
             ),
           ),
@@ -133,8 +128,12 @@ class _DashboardState extends State<Dashboard> {
                           SizedBox(
                             height: 5,
                           ),
-                          Text(pokemon.category,
-                              style: TextStyle(color: Colors.grey[500])),
+                          Text(pokemon.abilities,
+                              style: TextStyle(color: Colors.green[500])),
+                          Text(pokemon.weight,
+                              style: TextStyle(color: Colors.green[500])),
+                          Text(pokemon.height,
+                              style: TextStyle(color: Colors.green[500])),
                         ]),
                   ),
                 ],
