@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   "Let's Get Started",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 28,
                     fontWeight: FontWeight.w700,
                     color: Colors.amber,
                   ),
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     labelText: "Name",
                     hintText: "Enter your name",
-                    border: OutlineInputBorder(),
+                    border: UnderlineInputBorder(),
                     prefixIcon: Icon(Icons.person),
                   ),
                   validator: (value) {
@@ -83,13 +83,13 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 TextFormField(
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress, //revisi
                   obscureText: passToggle,
                   controller: passController,
                   decoration: InputDecoration(
                     labelText: "Password",
                     hintText: "Enter your password",
-                    border: OutlineInputBorder(),
+                    border: UnderlineInputBorder(),
                     prefixIcon: Icon(Icons.lock),
                     suffix: InkWell(
                       onTap: () {
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         });
                       },
                       child: Icon(
-                          passToggle ? Icons.visibility : Icons.visibility_off),
+                          passToggle ? Icons.visibility_off : Icons.visibility),
                     ),
                   ),
                   validator: (value) {
@@ -145,21 +145,22 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterPage()),
-                          );
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
-                            color: Colors.amber,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()),
+                        );
+                      },
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          color: Colors.amber,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ],
