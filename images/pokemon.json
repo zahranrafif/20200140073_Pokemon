@@ -1,0 +1,44 @@
+{
+  "pokemons": [
+    {
+      "name": "Bulbasaur",
+      "image": "images/1.png",
+      "category": "Seed",
+      "weight": "15.2 lbs",
+      "height": "2' 04",
+      "abilities": "Overgrow"
+    },
+    {
+      "name": "Ivysaur",
+      "image": "images/2.png",
+      "category": "Seed",
+      "weight": "28.7 lbs",
+      "height": "3' 03",
+      "abilities": "Overgrow"
+    },
+    {
+      "name": "Venusaur",
+      "image": "images/3.png",
+      "category": "Seed",
+      "weight": "220.5 lbs",
+      "height": "6' 07",
+      "abilities": "Overgrow"
+    },
+    {
+      "name": "Charmander",
+      "image": "images/4.png",
+      "category": "Lizard",
+      "weight": "18.7 lbs",
+      "height": "2' 00''",
+      "abilities": "Blaze"
+    },
+    {
+      "name": "Pikachu",
+      "image": "images/5.png",
+      "category": "Mouse",
+      "weight": "13.2 lbs",
+      "height": "1' 04''",
+      "abilities": "Static"
+    }
+  ]
+}
